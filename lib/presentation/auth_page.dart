@@ -5,9 +5,13 @@ class AuthPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Center(
-        child: Text('Auth page'),
+        child: ElevatedButton(
+            onPressed: () async {
+              throw Exception('My Crashlytics');
+            },
+            child: const Text('Send Crash')),
       ),
     );
   }
