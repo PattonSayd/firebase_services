@@ -11,6 +11,6 @@ abstract class AppRoutes {
   static final routes = <String, WidgetBuilder>{
     auth: (_) => const AuthPage(),
     lectures: (_) => const LecturesPage(),
-    profile: (_) => const ProfilePage(),
+    profile: (_) => ProfilePage(),
   };
 }

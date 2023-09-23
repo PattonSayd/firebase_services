@@ -1,3 +1,5 @@
+import 'package:firebase_services/app/routes.dart';
+import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:flutter/material.dart';
 
 class LecturesPage extends StatelessWidget {
@@ -5,8 +7,14 @@ class LecturesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
+    return Scaffold(
+      appBar: AppBar(
+        leading: InkWell(
+          onTap: () => Navigator.of(context).pushNamed(AppRoutes.profile),
+          child: const UserAvatar(size: 36),
+        ),
+      ),
+      body: const Center(
         child: Text('Lectures page'),
       ),
     );

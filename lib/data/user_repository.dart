@@ -9,6 +9,8 @@ class UserRepository {
 
   User? get user => _auth.currentUser;
 
+  Stream<User?> get userStream => _auth.userChanges();
+
   Future<void> signInAnonymously() async {
     await _auth.signInAnonymously();
   }
