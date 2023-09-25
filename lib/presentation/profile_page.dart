@@ -36,9 +36,9 @@ class ProfilePage extends StatelessWidget {
               return const CircularProgressIndicator();
             }
 
-            return Padding(
-              padding: const EdgeInsets.all(8.0),
+            return Center(
               child: Column(
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   const Text(
                     'Firebase User Info',
