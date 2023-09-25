@@ -26,11 +26,11 @@ class LecturesRepository {
 
     //* atomar metod
     //* set, get imkanı
-    _firestore.runTransaction((transaction) async {
-      for (var lecture in lecturesPrefilingData) {
-        transaction.set(_lectureCollectionRef.doc(), lecture);
-      }
-    });
+    //  await _firestore.runTransaction((transaction) async {
+    //     for (var lecture in lecturesPrefilingData) {
+    //       transaction.set(_lectureCollectionRef.doc(), lecture);
+    //     }
+    //   });
 
     //* atomar metod
     //* daha optimallaşdırılmış set
@@ -43,5 +43,17 @@ class LecturesRepository {
     await batch.commit();
 
     logger.d('Filled Database');
+  }
+
+  Future<void> clearDatabase() async {
+    final lecturesSnapshot = await _lectureCollectionRef.get();
+
+    await _firestore.runTransaction((transaction) async {
+      for (var doc in lecturesSnapshot.docs) {
+        transaction.delete(doc.reference);
+      }
+    });
+
+    logger.d('Cleared Database');
   }
 }
