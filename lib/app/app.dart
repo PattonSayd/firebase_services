@@ -13,16 +13,18 @@ class App extends StatefulWidget {
 
 class _AppState extends State<App> {
   final userRepository = Locator.userRepository;
+  final configRepository = Locator.configRepository;
 
   @override
   Widget build(BuildContext context) {
     final isAuthorized = userRepository.isAuthorized;
+    final useDarkTheme = configRepository.useDarkTheme;
     logger.d('User authorized: $isAuthorized');
 
     return MaterialApp(
       title: 'Firebase services',
       debugShowCheckedModeBanner: false,
-      themeMode: ThemeMode.light,
+      themeMode: useDarkTheme ? ThemeMode.dark : ThemeMode.light,
       theme: AppTheme.lightTheme(),
       darkTheme: AppTheme.darkTheme(),
       initialRoute: isAuthorized ? AppRoutes.lectures : AppRoutes.auth,

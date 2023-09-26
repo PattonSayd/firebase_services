@@ -5,7 +5,9 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:firebase_services/app/logger.dart';
+import 'package:firebase_services/data/config_repository.dart';
 import 'package:firebase_services/data/lecture_repository.dart';
 import 'package:firebase_services/data/user_repository.dart';
 import 'package:firebase_services/firebase_options.dart';
@@ -22,14 +24,20 @@ abstract class Locator {
   static LecturesRepository get lecturesRepository =>
       _locator<LecturesRepository>();
 
+  static ConfigRepository get configRepository => _locator<ConfigRepository>();
+
   static Future<void> init() async {
     WidgetsFlutterBinding.ensureInitialized();
     await _initFirebase();
     _initCrashlytics();
 
     _locator.registerLazySingleton<FirebaseAuth>(() => FirebaseAuth.instance);
+
     _locator.registerLazySingleton<FirebaseFirestore>(
         () => FirebaseFirestore.instance);
+
+    _locator.registerLazySingleton<FirebaseRemoteConfig>(
+        () => FirebaseRemoteConfig.instance);
 
     _locator.registerSingleton<UserRepository>(
       UserRepository(_locator<FirebaseAuth>()),
@@ -40,6 +48,10 @@ abstract class Locator {
         _locator<FirebaseFirestore>(),
       ),
     );
+
+    final configRepo = ConfigRepository(_locator<FirebaseRemoteConfig>());
+    await configRepo.init();
+    _locator.registerSingleton<ConfigRepository>(configRepo);
   }
 
   static Future<void> _initFirebase() async {

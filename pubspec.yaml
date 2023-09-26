@@ -16,13 +16,15 @@ dependencies:
   logger: ^2.0.2
   freezed_annotation: ^2.4.1
   json_annotation: ^4.8.1
-
+  
+  # Firebase
   firebase_core: ^2.16.0
   firebase_crashlytics: ^3.3.6
   firebase_analytics: ^10.5.0
   firebase_auth: ^4.10.0
   firebase_ui_auth: ^1.8.0
   cloud_firestore: ^4.9.2
+  firebase_remote_config: ^4.2.6
 
 dev_dependencies:
   flutter_test:

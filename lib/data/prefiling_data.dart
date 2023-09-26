@@ -9,7 +9,7 @@ final lecturesPrefilingData = [
   ),
   const Lecture(
     title: 'Routes&Navigation',
-    youtubeVideoId: 'nyvwx7o277U&t',
+    youtubeVideoId: 'nyvwx7o277U',
     description:
         'Mühazirədə proqramda naviqasiyanın nə olduğunu və Flutter-də necə işlədiyini nəzərdən keçirəcəyik.\n'
         'Naviqatorla (Navigator 1.0) işləməyi ətraflı nəzərdən keçirək, əsas naviqasiya əməliyyatlarını necə yerinə yetirməyi, arqumentləri necə ötürməyi və ekranlar arasında naviqasiya zamanı nəticələri qaytarmağı öyrənək, naviqasiya hadisələrini necə izləyə biləcəyinizi görək, həmçinin əlavə etmək üçün necə baxaq. dialoq və modal pəncərələr və BottomNavigationBar CupertinoTabBar nümunəsindən istifadə edərək bəzi ssenarilər naviqasiyasını həyata keçirin.',

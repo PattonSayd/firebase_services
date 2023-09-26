@@ -39,7 +39,9 @@ class _LecturesPageState extends State<LecturesPage> {
               }
             },
             child: _isAdding
-                ? const CupertinoActivityIndicator()
+                ? const Center(
+                    child: CupertinoActivityIndicator(),
+                  )
                 : const Text('Add lectures'),
           ),
           TextButton(
